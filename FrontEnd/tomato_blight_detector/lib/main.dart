@@ -52,7 +52,7 @@ class HomeState extends State<Home> {
     stream.cast();
     // print("HEOOOOOOOOOOOO");
     var length = await _image.length();
-    var uri = Uri.parse("http://192.168.0.107:8000/prediction");
+    var uri = Uri.parse("http://192.168.153.178:8000/prediction");
     var request = new http.MultipartRequest("POST", uri);
     // request.fields["title"] = "static title";
 
