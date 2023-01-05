@@ -30,7 +30,7 @@ class HomeState extends State<Home> {
   File _image;
   // final _picker = ImagePicker();
   bool showSpinner = false;
-  var condition, confidence;
+  var condition = "None", confidence = "None", percent = "";
   Future UploadImage(source) async {
     var image;
     var pickedFile;
@@ -50,10 +50,11 @@ class HomeState extends State<Home> {
     // print("hello");
     var stream = new http.ByteStream(_image.openRead());
     stream.cast();
-    // print("HEOOOOOOOOOOOO");
+    print("HEOOOOOOOOOOOO");
     var length = await _image.length();
     var uri = Uri.parse("http://192.168.153.178:8000/prediction");
     var request = new http.MultipartRequest("POST", uri);
+    print("bye");
     // request.fields["title"] = "static title";
 
     // print("req made");
@@ -81,9 +82,11 @@ class HomeState extends State<Home> {
     if (res.statusCode == 200) {
       print("image uploaded");
       final respStr = (json.decode(res.body) as Map<String, dynamic>);
+      print(respStr);
       setState(() {
         condition = respStr["class"];
-        confidence = respStr["confidence"];
+        confidence = respStr["confidence"].toString();
+        percent = "%";
       });
     } else {
       print("failed");
@@ -139,7 +142,7 @@ class HomeState extends State<Home> {
               SizedBox(
                 height: 20,
               ),
-              Text("confidence: $confidence %",
+              Text("confidence: $confidence $percent",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               SizedBox(
                 height: 40,
