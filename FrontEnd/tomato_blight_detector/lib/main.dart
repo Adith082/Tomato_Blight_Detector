@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import "dart:io";
-import "package:image_picker/image_picker.dart";
-import "package:http/http.dart" as http;
-import "dart:convert";
-
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'workflowPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,160 +9,93 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: TomatoBlightDetectorFrontPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        fontFamily: "Bangers",
+      ),
     );
   }
 }
 
-class Home extends StatefulWidget {
-  // const Home({super.key});
-
-  @override
-  State<Home> createState() => HomeState();
-}
-
-class HomeState extends State<Home> {
-  File _image;
-  // final _picker = ImagePicker();
-  bool showSpinner = false;
-  var condition = "None", confidence = "None", percent = "";
-  Future UploadImage(source) async {
-    var image;
-    var pickedFile;
-    if (source == "gallery")
-      pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
-    else
-      pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
-
-    if (pickedFile != null) {
-      _image = File(pickedFile.path);
-    } else {
-      print("no image selected");
-    }
-    setState(() {
-      showSpinner = false;
-    });
-    // print("hello");
-    var stream = new http.ByteStream(_image.openRead());
-    stream.cast();
-    print("HEOOOOOOOOOOOO");
-    var length = await _image.length();
-    var uri = Uri.parse("http://192.168.153.178:8000/prediction");
-    var request = new http.MultipartRequest("POST", uri);
-    print("bye");
-    // request.fields["title"] = "static title";
-
-    // print("req made");
-    // var multiport = http.MultipartFile("file", stream, length);
-    // request.files.add(multiport);
-    // print("i am here");
-    // var response = await request.send();
-    // print("byyyyyyy");
-    // print(response);
-    // if (response.statusCode == 200) {
-    //   print("image uploaded!!!!!!!!!!!!!!!!!!");
-    //   print(response.reasonPhrase);
-    //   setState(() {
-    //     showSpinner = false;
-    //   });
-    // } else {
-    //   print("failed");
-    //   setState(() {
-    //     showSpinner = false;
-    //   });
-    request.files
-        .add(await http.MultipartFile.fromPath("file", pickedFile.path));
-    // var res = await request.send();
-    http.Response res = await http.Response.fromStream(await request.send());
-    if (res.statusCode == 200) {
-      print("image uploaded");
-      final respStr = (json.decode(res.body) as Map<String, dynamic>);
-      print(respStr);
-      setState(() {
-        condition = respStr["class"];
-        confidence = respStr["confidence"].toString();
-        percent = "%";
-      });
-    } else {
-      print("failed");
-    }
-
-    // var request = http.MultipartRequest(
-    //     'POST', Uri.parse("http://192.168.0.107:8000/prediction"));
-    // request.files.add(http.MultipartFile.fromBytes(
-    //     'file', File(image).readAsBytesSync(),
-    //     filename: 'tomato_leaf'));
-    // var res = await request.send();
-    // print(res.statusCode);
-    // print("making in");
-    // var response = await http.get(Uri.parse("http://192.168.0.107:8000/tick"));
-    // print(response);
-    // print("making out");
-    // setState(() {
-    //   _image = image;
-    // });
-  }
-
+class TomatoBlightDetectorFrontPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ModalProgressHUD(
-      inAsyncCall: showSpinner,
-      child: Scaffold(
-          backgroundColor: Colors.yellowAccent,
-          appBar: AppBar(
-              backgroundColor: Colors.green,
-              title: Text("Tomato_Blight_Detector")),
-          body: Column(
-            children: <Widget>[
-              SizedBox(
-                height: 40,
+    return Scaffold(
+      backgroundColor: Colors.orange[100],
+      appBar: AppBar(
+        backgroundColor: Colors.green[900],
+        title: Text(
+          'Tomato Blight Detector',
+          style: TextStyle(color: Colors.red[100]),
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+              width: 300,
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.brown)),
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(50, 0, 20, 10),
+              //   padding: const EdgeInsets.all(10.0),
+              child: Image.asset(
+                "assets/Images/Tomato_pic.png",
+                fit: BoxFit.cover,
+              )),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            margin: const EdgeInsets.all(10.0),
+            // padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(border: Border.all(color: Colors.brown)),
+            child: Text('Welcome to Tomato Blight Detector Arena! ',
+                style: TextStyle(
+                  //  fontWeight: FontWeight.bold,
+                  fontSize: 29,
+                  color: Colors.brown[900],
+                ),
+                textAlign: TextAlign.center),
+          ),
+          SizedBox(height: 10),
+          Container(
+            margin: const EdgeInsets.all(10.0),
+            // padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(border: Border.all(color: Colors.brown)),
+            child: Text(
+              'We will assist you detecting late blight and early blight , a common disease that defects tomato plants. Simply upload a picture of your tomato plant leaf and let me do the rest!',
+              // style: Theme.of(context).textTheme.bodyText1,
+              style: TextStyle(
+                  //  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.brown[900]),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WorkingPage(),
+                ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+                primary: Colors.brown[900],
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+            child: Container(
+              child: Text(
+                'Enter',
+                style: TextStyle(color: Colors.red[50], fontSize: 20),
               ),
-              Text("Image will be shown below", style: TextStyle(fontSize: 20)),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: 300,
-                width: 300,
-                color: Colors.lightGreenAccent,
-                child: _image == null
-                    ? Center(child: Text("NO PICTURE HAS BEEN SELECTED"))
-                    : Image.file(File(_image.path).absolute),
-              ),
-              SizedBox(
-                height: 45,
-              ),
-              Text("Condition: $condition",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              SizedBox(
-                height: 20,
-              ),
-              Text("confidence: $confidence $percent",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              SizedBox(
-                height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  FloatingActionButton(
-                    onPressed: () {
-                      UploadImage("gallery");
-                    },
-                    backgroundColor: Colors.brown,
-                    child: Icon(Icons.photo_library),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      UploadImage("camera");
-                    },
-                    backgroundColor: Colors.blueGrey,
-                    child: Icon(Icons.camera),
-                  )
-                ],
-              )
-            ],
-          )),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
