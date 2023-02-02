@@ -1,8 +1,11 @@
 import { useState, useRef } from "react";
 import styles from './DragDropFiles.module.css'
 import {GET, POST } from "../api/api";
-const DragDropFiles = () => {
+import Button from './Button/Button'
+import { useNavigate } from "react-router-dom";
+const DragDropFiles = (props) => {
 
+  const navigate=useNavigate()
   const [up,setUp]=useState(0)
   const [res,setRes]=useState([])
   const fileInput = useRef(null);
@@ -44,7 +47,8 @@ const handleUpload=async()=>{
   })
   console.log(res.data)
   setRes(res.data)
-
+  props.getValue(res.data)
+  navigate("/result")
 
 }
 const cancelHandler=()=>{
@@ -57,9 +61,9 @@ const cancelHandler=()=>{
 
 
 if(!image)return (
-  
+
   <div className={styles.wrapper}>
-          <div className={styles.title}>Tomato Blight Detector</div>
+        
 
       <div 
        className={styles.drop_zone}
@@ -67,7 +71,7 @@ if(!image)return (
        onDrop = {(e)=>handleOndrop(e)}
        onClick = { () => fileInput.current.click()}
       > 
-       <p>Click to select or Drag and drop image here....</p>
+       <p style={{fontWeight:700}}>Click to select or Drag and drop image here....</p>
        <input 
            type="file" 
            accept='image/*' 
@@ -80,21 +84,26 @@ if(!image)return (
 </div>
 )
 return (
-  <div>
+  <div  className={styles.main}>
+    
 
 <div className={styles.uploads}>
-       
-{ previewUrl && <div className={styles.image}>
+       <div className={styles.imgcon}>
+        { previewUrl && <div className={styles.image}>
   <img src={previewUrl} alt='image' /> 
-  {/* <span> {image.name} </span> */}
 </div> }
+       </div>
         <div className={styles.actions}>
-            <button onClick={() => cancelHandler()}>Cancel</button>
-            <button onClick={handleUpload}>Upload</button>
+          <div onClick={cancelHandler}>
+          <Button type={"cancel"} value={"Cancel"} ></Button>
+
+          </div>
+          <div  onClick={handleUpload}>
+          <Button type={"has"} value={"Upload"}></Button>
+
+          </div>
         </div>
         <div>
-          {res.length===0?null:<div><span className={styles.spacing}>{res.class}</span>
-<span className={styles.spacing}>{res.confidence}%</span></div>}
         </div>
     </div>
 

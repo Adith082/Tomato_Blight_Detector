@@ -1,0 +1,10 @@
+.rescon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1300px;
+    height: 550px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color:black;
+}
