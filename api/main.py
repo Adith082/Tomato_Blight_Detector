@@ -6,7 +6,7 @@ import tensorflow as tf
 import uvicorn
 app = FastAPI()
 MODEL = tf.keras.models.load_model("../0.0.1")
-CLASS_NAME = ["Tomato_Early_Blight","Tomato_Late_Blight","Tomato_Healthy"]
+CLASS_NAME = ["Early Blight","Late Blight","Healthy"]
 @app.get("/tick")
 async def ping():
     return "HHHH"
@@ -33,4 +33,4 @@ async  def prediction(file: UploadFile = File(...)):
     }
 
 if __name__ == "__main__":
-    uvicorn.run(app,host="192.168.153.178",port=8000)
+    uvicorn.run(app,host="192.168.85.178",port=8000)
