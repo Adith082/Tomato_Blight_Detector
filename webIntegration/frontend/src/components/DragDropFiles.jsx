@@ -3,6 +3,7 @@ import styles from './DragDropFiles.module.css'
 import {GET, POST } from "../api/api";
 import Button from './Button/Button'
 import { useNavigate } from "react-router-dom";
+import Nav from "./nav/Nav";
 const DragDropFiles = (props) => {
 
   const navigate=useNavigate()
@@ -61,32 +62,39 @@ const cancelHandler=()=>{
 
 
 if(!image)return (
+<div>
+  <div className={styles.navbar2}>
+  <Nav />
+  </div>
 
-  <div className={styles.wrapper}>
+<div className={styles.wrapper}>
+     
+     <div 
+      className={styles.drop_zone}
+      onDragOver = {(e)=>handleOndragOver(e)}
+      onDrop = {(e)=>handleOndrop(e)}
+      onClick = { () => fileInput.current.click()}
+     > 
+      <p style={{fontWeight:700}}>Click to select or Drag and drop image here....</p>
+      <input 
+          type="file" 
+          accept='image/*' 
+          ref={fileInput} hidden 
+          onChange={e => handleFile(e.target.files[0])}
+         />
         
-
-      <div 
-       className={styles.drop_zone}
-       onDragOver = {(e)=>handleOndragOver(e)}
-       onDrop = {(e)=>handleOndrop(e)}
-       onClick = { () => fileInput.current.click()}
-      > 
-       <p style={{fontWeight:700}}>Click to select or Drag and drop image here....</p>
-       <input 
-           type="file" 
-           accept='image/*' 
-           ref={fileInput} hidden 
-           onChange={e => handleFile(e.target.files[0])}
-          />
-         
-     </div> 
-   
+    </div> 
+  
 </div>
+
+</div>
+ 
 )
 return (
+  <div>
+    <Nav/>
   <div  className={styles.main}>
     
-
 <div className={styles.uploads}>
        <div className={styles.imgcon}>
         { previewUrl && <div className={styles.image}>
@@ -107,6 +115,7 @@ return (
         </div>
     </div>
 
+</div>
 </div>
 )
 

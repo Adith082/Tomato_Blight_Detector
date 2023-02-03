@@ -1,19 +1,19 @@
 
 
- .title{
+ /* .title{
   margin-top: 100px;
   /* background-color: #5f5959; */
-} 
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 1300px;
-  height: 550px;
-  padding:20px;
-  background-image: url("../image/tomato1.png");
+  height: 450px;
+  /* padding:20px; */
+  /* background-image: url("../image/tomato1.png"); */
   object-fit: cover;
-  background-color: #d4d2d2;
+  /* background-color: black; */
     /* width: 100%; */
     /* margin: 100px; */
 
@@ -24,18 +24,21 @@
     display: flex;
     height: 200px;
     width: 60%;
-    background: white;
+    background: whitesmoke;
     /* background-image:; */
     background-repeat: no-repeat;
     background-size: 100px;
     background-position: center;
-    background-color: #ffffff;
+    /* background-color: #a54343; */
     cursor: pointer;
-    border: 2px dashed #ccc;
-    border-radius: 6px;
+    /* border: 2px dashed #ccc; */
+    border-radius: 15px;
     margin-bottom: 25px;
     background-position: center 28px;
     opacity: .5;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.8);
+
+    /* border: ; */
 }
 .drop_zone>p {
     margin: auto;
@@ -45,12 +48,16 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  /* margin-top: 1px; */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
   /* height: 550px; */
   
 }
 .imgcon{
+  margin-top: 70px;
   /* background-color: #34d44f; */
-  margin-top: 160px;
+  /* margin-top: 160px; */
 }
 .image{
   /* margin-top: 150px; */
@@ -150,14 +157,18 @@ button {
 
 
 .main{
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 1300px;
   height: 550px;
-  padding:20px;
-  background-color: #d4d2d2;
-  background-image: url("../image/tomato1.png");
+  /* padding:20px; */
+  /* background-color: #d4d2d2; */
+  /* background-image: url("../image/tomato1.png"); */
   object-fit: contain;
-
+/*  */
+}
+.navbar2{
+  margin-bottom: 100px;
 }

@@ -13,6 +13,7 @@ const App = () => {
     }
     return (
         <BrowserRouter>
+        
         <Routes>
         <Route path="/" exect element={<LandingPage/>}/>
         <Route path="/detector" exect element={<DragDropFiles getValue={valueHandler}/>}/>

@@ -12,9 +12,9 @@ const LandingPage=()=>{
         <div className={style.text}>
             <App/>
         </div> 
-        <div className={style.image}>
+        {/* <div className={style.image}>
             <img className={style.img} src={tomato}/>
-        </div>
+        </div> */}
           
         </div>
 

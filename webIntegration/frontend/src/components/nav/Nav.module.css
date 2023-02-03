@@ -1,0 +1,19 @@
+.container1{
+
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(46, 44, 44);
+    height: 50px;
+    
+    
+}
+.text{
+    color: rgb(174, 238, 143);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 6px;
+
+}
