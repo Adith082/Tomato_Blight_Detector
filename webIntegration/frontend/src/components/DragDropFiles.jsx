@@ -48,7 +48,7 @@ const handleUpload=async()=>{
   })
   console.log(res.data)
   setRes(res.data)
-  props.getValue(res.data)
+  props.getValue({val:res.data,previewUrl})
   navigate("/result")
 
 }

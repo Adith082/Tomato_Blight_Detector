@@ -1,12 +1,14 @@
 *{
-    
+    margin: 0;
+    padding: 0;
 }
-.container{
+.container2{
     display: flex;
     /* margin-top: 20px; */
     align-items: center;
     justify-content: center;
     background-color:white;
+    /* background-image:url("../../image/tomato3.jpg") */
     /* z-index: 100; */
 }
 .text

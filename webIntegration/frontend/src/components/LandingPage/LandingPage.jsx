@@ -7,7 +7,7 @@ const LandingPage=()=>{
 
 
     return (
-        <div className={style.container}>
+        <div className={style.container2}>
 
         <div className={style.text}>
             <App/>

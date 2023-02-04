@@ -7,9 +7,10 @@ import Result from "./components/Result/Result";
 import { useState } from "react";
 const App = () => {
     const [getVal,setVal]=useState({})
-    const valueHandler=(val)=>{
-        console.log(val.class)
-        setVal(val)
+    const valueHandler=(value)=>{
+        // console.log(value.previewUrl)
+        // console.log(value.val.class)
+        setVal(value)
     }
     return (
         <BrowserRouter>
