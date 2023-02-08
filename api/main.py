@@ -5,8 +5,8 @@ from PIL import Image
 import tensorflow as tf
 import uvicorn
 app = FastAPI()
-MODEL = tf.keras.models.load_model("../0.0.1")
-CLASS_NAME = ["Early Blight","Late Blight","Healthy"]
+MODEL = tf.keras.models.load_model("../0.0.4")
+CLASS_NAME = ["Not a Tomato Leaf","Early Blight","Late Blight","Healthy"]
 @app.get("/tick")
 async def ping():
     return "HHHH"
