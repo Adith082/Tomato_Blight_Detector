@@ -48,7 +48,7 @@ result.We used a CNN (Convolutional Neural Network) model architecture to build 
 
 
 ## Results
-After training over all the 4 versions of the model , we get the following results below
+After training , testing and validating over all the 4 versions of the model , we get the following results below
 
 | Model Version | Tomato Leaf Images Frequency | COCO Common Object Images Frequency | Accuracy on Trained Data | Accuracy on Validation Data | Accuracy on Test Data |
 | --- | --- | --- | --- | --- | --- |
