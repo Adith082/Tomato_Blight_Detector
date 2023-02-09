@@ -42,7 +42,10 @@ result.We used a CNN (Convolutional Neural Network) model architecture to build 
 - But the rest 3 versions of the model (0.0.2 , 0.0.3 , 0.0.4) are trained , tested and validated on both [Kaggle](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) and [COCO Common Object Validation Images of 2017](https://cocodataset.org/#download) datasets which can detect all the 4 classes.
 - The model consisting of convolutional layer part and flattened dense layer part. Kernel size of (3,3) has been considered.
 - A total of 6 convolutional layers , each performing rectified linear unit as activation function and max-pooling operation of size (2,2).
-- 
+- In dense flattened layer , along with rectified linear unit function , soft-max activation function is being added for the final layers 4 neurons for normalizing the probabilistic values of those 4 classes.
+- Only for model version 0.0.1 the first convolutional layer is having 32 neurons and the final flattened dense layer consist of 3 neurons and the rest of them are of 64 neurons
+-But for the rest of the versions of this model, apart from the final flattened dense layer which consist of 4 neurons the rest of the layers each consist of 64 neurons.
+
 
 ## Results
 After training over all the 4 versions of the model , we get the following results below
@@ -59,6 +62,7 @@ After training over all the 4 versions of the model , we get the following resul
    - [Enamul Hassan](https://www.sust.edu/d/cse/faculty-profile-detail/590) Sir for providing valuable feedbacks and amazing ideas regarding the development of this project.
    - All the members of our team for their relentless contribution on developing this project which gave promising results.
    - [Dhaval Patel](https://www.youtube.com/@codebasics) for his resourceful youtube channel from which we learned a lot of concepts eventually applying those concepts to           this project.
+   
    
  ## Group Members
  | Name | Registration Number |
