@@ -54,6 +54,10 @@ After training , testing and validating over all the 4 versions of the model , w
 | 0.0.3 | 4490 | 1111 | 98.76% | 95.32% | 94.90% |
 | 0.0.4 | 4490 | 2085 | 99.10% | 97.66% | 96.88% |
 
+## Future work
+- The model could be further optimized and improved to increase its accuracy by collecting more diverse data and tinkering the model architecture.
+- A universal vegetables disease detector could be a future scope if we could collect vast amount of different diseases image data with increased diversity.
+
 ## Acknowledgements
   Special thanks to : 
    - [Enamul Hassan](https://www.sust.edu/d/cse/faculty-profile-detail/590) Sir for providing valuable feedbacks and amazing ideas regarding the development of this project.
