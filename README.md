@@ -17,10 +17,7 @@ result.We used a CNN (Convolutional Neural Network) model architecture to build 
 - React , an open-source web framework specifically used for providing user experience in web platform.
 - Fast API , a fast , open source , high performance back-end framework for building APIs.
 - Google Fonts is a font service owned by Google which includes free and open source font families.
-## Installation
-- Clone the repository using `git clone https://github.com/username/image-classification-cnn.git`
-- Install the required packages using `pip install -r requirements.txt`
-- Run the code using `python main.py`
+
 
 ## Features
 - Users can use both web and mobile services for image classification of tomato leaf.
