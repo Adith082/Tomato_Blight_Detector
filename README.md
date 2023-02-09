@@ -1,6 +1,6 @@
 # Tomato Blight Detector
 ## Group Number : 12
-## Group Name : Visionary Providers
+## Team Name : Visionary Providers
 ## Project Description
 This project aims to detect whether a tomato leaf is healthy or it is defected with diseases known as late blight or early blight.Early blight and late blight are two of common diseases
 caused by fungus and micro-organism.The overall detection process is done through image classification.Both mobile and web services are available for the users to take pictures and get the evaluation
@@ -29,19 +29,27 @@ result.We used a CNN (Convolutional Neural Network) model architecture to build 
 ## Additional Features
  - Initially the model could only detect healthy , late blight and early blight conditions which can be mentioned as version 0.0.1 . Then we developed 3 other versions all of    which are capable of detecting one additional class which is whether a particular picure is anything other than tomato leaf.
  - If an image is a tomato leaf then the model would find whether it is in late blight or early blight or healthy conditions. Otherwise the model will provide the information of (not a tomato leaf) class.
-## Dataset
-The CIFAR-10 dataset consists of 60,000 32x32 color training images and 10,000 test images, with 10 classes. It can be obtained from [here](https://www.cs.toronto.edu/~kriz/cifar.html). The dataset was preprocessed by converting the images to grayscale and normalizing the pixel values.
+ - Additional user interface improvements on web platform have been done for better user experience.
+## Dataset Information
+- We used 4490 images of tomato leafs from [Kaggle](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) and about 5000 images of common objects from 
+[COCO Common Object Validation Images of 2017](https://cocodataset.org/#download) for training , testing and validating the model.
+- We collected some practical field level tomato leaf images.
+- We 80% of the whole dataset has been considered for training and the rest 20% is divided into validating and testing purpose.
+- We applied several augmentative techniques on the images before training  , testing and validating the model.
 
 ## Model Information
-The model used in this project is a simple convolutional neural network with 2 convolutional layers and 2 fully connected layers. The model was trained using stochastic gradient descent with a learning rate of 0.001 for 50 epochs.
-
+- A total of 4 versions of the model has been created. Out of which only the first version (0.0.1) is trained tested and validated only on [Kaggle](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) data set which can detect 3 classes of image and cannot classify (not a tomato leaf class).
+- But the rest 3 versions of the model (0.0.2 , 0.0.3 , 0.0.4) are trained , tested and validated on both [Kaggle](https://www.kaggle.com/datasets/arjuntejaswi/plant-village) and [COCO Common Object Validation Images of 2017](https://cocodataset.org/#download) datasets which can detect all the 4 classes.
+- The model consisting of convolutional layer part and flattened dense layer part. Kernel size of (3,3) has been considered.
+- A total of 6 convolutional layers , each performing rectified linear unit as activation function and max-pooling operation of size (2,2).
+- 
 
 ## Results
 After training over all the 4 versions of the model , we get the following results below
 
 | Model Version | Tomato Leaf Images Frequency | COCO Common Object Images Frequency | Accuracy on Trained Data | Accuracy on Validation Data | Accuracy on Test Data |
 | --- | --- | --- | --- | --- | --- |
-| 0.0.1 | 4490 | - | 98% | 96% | 95% |
+| 0.0.1 | 4490 | 0 | 98% | 96% | 95% |
 | 0.0.2 | 4490 | 5000 | 98.85% | 97.92% | 97.28% |
 | 0.0.3 | 4490 | 1111 | 98.76% | 95.32% | 94.90% |
 | 0.0.4 | 4490 | 2085 | 99.10% | 97.66% | 96.88% |
